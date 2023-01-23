@@ -33,6 +33,15 @@ To create a production version of your app:
 npm run build
 ```
 
+## Running
+
+To run this app through the node adapter:
+
+```bash
+node -r dotenv/config build
+```
+
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+> This app is currently set up to be deployed through node
