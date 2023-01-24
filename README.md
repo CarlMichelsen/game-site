@@ -1,4 +1,4 @@
-# create-svelte
+# Create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
@@ -33,12 +33,26 @@ To create a production version of your app:
 npm run build
 ```
 
-## Running
+## Run locally
 
 To run this app through the node adapter:
 
 ```bash
 node -r dotenv/config build
+```
+
+## Run locally with docker
+
+Build:
+
+```bash
+docker build -t game-site-image .
+```
+
+Run:
+
+```bash
+docker run -d -p 3000:3000 --name game-site game-site-image
 ```
 
 You can preview the production build with `npm run preview`.
