@@ -1,5 +1,6 @@
-<script>
-	
+<script lang="ts">
+	import Login from "$lib/components/body/Login.svelte";
+	import HeaderBar from "$lib/components/header/HeaderBar.svelte";
 </script>
 
 <svelte:head>
@@ -7,9 +8,15 @@
 	<meta name="description" content="Game app" />
 </svelte:head>
 
-<section>
-	<h1>Hello</h1>
-</section>
+<div class="container mx-auto">
+	<HeaderBar loggedIn={false} />
+	<br />
+	<br />
+	<br />
+	<section>
+		<Login />
+	</section>
+</div>
 
 <style lang="postcss">
 	:global(html) {
