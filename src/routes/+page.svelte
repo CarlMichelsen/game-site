@@ -10,10 +10,7 @@
 
 <div class="container mx-auto">
 	<HeaderBar loggedIn={false} />
-	<br />
-	<br />
-	<br />
-	<section>
+	<section class="mt-20">
 		<Login />
 	</section>
 </div>
