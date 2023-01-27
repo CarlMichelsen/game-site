@@ -5,7 +5,7 @@
 
 <svelte:head>
 	<title>CurrentCapitalism</title>
-	<meta name="description" content="Game app" />
+	<meta name="description" content="Landing page" />
 </svelte:head>
 
 <div class="container mx-auto">
