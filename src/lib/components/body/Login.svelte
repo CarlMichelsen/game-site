@@ -7,7 +7,16 @@
     import LoginButton from '../util/LoginButton.svelte';
     import ValidatedInput from '../util/form/ValidatedInput.svelte';
     
-	
+	import { signIn, signOut } from '@auth/sveltekit/client';
+	import { page } from '$app/stores';
+
+    let authorizing = false;
+
+    const wrappedSignIn = async (identityService: string) => {
+        authorizing = true;
+        await signIn(identityService);
+        authorizing = false;
+    }
 </script>
 
 <div class="mx-auto w-96 text-center">
@@ -24,8 +33,8 @@
     <br />
     <br />
     <div class="space-y-2">
-        <IconCallToAction icon={steamIcon} text="Login with Steam" on:click={() => console.log("Steam")}/>
-        <IconCallToAction icon={githubIcon} text="Login with Github" on:click={() => console.log("Github")}/>
-        <IconCallToAction icon={googleIcon} text="Login with Google" on:click={() => console.log("Google")}/>
+        <IconCallToAction icon={steamIcon} text="Login with Steam" on:click={() => wrappedSignIn("steam")}/>
+        <IconCallToAction icon={githubIcon} text="Login with Github" on:click={() => wrappedSignIn("github")}/>
+        <IconCallToAction icon={googleIcon} text="Login with Google" on:click={() => wrappedSignIn("google")}/>
     </div>
 </div>
