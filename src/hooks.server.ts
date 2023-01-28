@@ -1,13 +1,13 @@
 import type { Provider } from '@auth/core/providers';
 import GitHub from '@auth/core/providers/github';
 import { SvelteKitAuth, type SvelteKitAuthConfig } from '@auth/sveltekit';
-import dotenv from 'dotenv';
-dotenv.config();
-import { GITHUB_AUTH_CLIENT_ID, GITHUB_AUTH_SECRET } from '$env/static/private';
+import { environment } from '$lib/environment';
+
+//console.log('secret', environment.githubAuthClientId, environment.githubAuthSecret);
 
 const authConfigGithub = GitHub({
-	clientId: GITHUB_AUTH_CLIENT_ID,
-	clientSecret: GITHUB_AUTH_SECRET
+	clientId: environment.githubAuthClientId,
+	clientSecret: environment.githubAuthSecret
 });
 const config: SvelteKitAuthConfig = {
 	prefix: '/auth',
