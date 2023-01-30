@@ -10,7 +10,7 @@ const authConfigGithub = GitHub({
 
 const config: SvelteKitAuthConfig = {
 	trustHost: environment.development,
-	secret: environment.development ? 'very secret' : undefined,
+	secret: environment.authSecret,
 	providers: [authConfigGithub] as Provider[]
 };
 
