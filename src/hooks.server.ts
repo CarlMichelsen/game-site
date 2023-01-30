@@ -7,8 +7,10 @@ const authConfigGithub = GitHub({
 	clientId: environment.githubAuthClientId,
 	clientSecret: environment.githubAuthSecret
 });
+const providers = [authConfigGithub] as Provider[];
 const config: SvelteKitAuthConfig = {
-	providers: [authConfigGithub] as Provider[]
+	trustHost: environment.development,
+	providers: environment.development ? [] : providers
 };
 
 export const handle = SvelteKitAuth(config);
