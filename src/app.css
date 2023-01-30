@@ -5,3 +5,7 @@
 .svg-icon {
     filter: invert(100%);
 }
+
+html {
+    @apply bg-neutral-900 text-neutral-100;
+}

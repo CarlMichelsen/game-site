@@ -1,9 +1,10 @@
 <script lang="ts">
-	import Login from "$lib/components/body/Login.svelte";
 	import HeaderBar from "$lib/components/header/HeaderBar.svelte";
+	import LoginButton from "$lib/components/util/LoginButton.svelte";
 
-	import { page } from '$app/stores';
-	import { signOut } from '@auth/sveltekit/client';
+	const play = () => {
+		window.location.href = "/home";
+	}
 </script>
 
 <svelte:head>
@@ -15,20 +16,8 @@
 	
 	<HeaderBar loggedIn={false} />
 	<section class="mt-20">
-		{#if Object.keys($page.data.session || {}).length}
-			{#if $page.data?.session?.user?.image}
-				<span style="background-image: url('{$page.data.session.user.image}')" class="rounded-full" />
-			{/if}
-			<button on:click={() => signOut()}>sign out</button>
-		{:else}
-			<Login />
-		{/if}
+		<div class="w-72 mx-auto">
+			<LoginButton on:click={play}>Start Playing</LoginButton>
+		</div>
 	</section>
 </div>
-
-<style lang="postcss">
-	:global(html) {
-	  background-color: theme(colors.neutral.900);
-	  color: theme(colors.neutral.100);
-	}
-</style>

@@ -7,9 +7,9 @@
     import LoginButton from '../util/LoginButton.svelte';
     import ValidatedInput from '../util/form/ValidatedInput.svelte';
     
-	import { signIn, signOut } from '@auth/sveltekit/client';
-	import { page } from '$app/stores';
+	import { signIn } from '@auth/sveltekit/client';
 
+    export let oAuth: boolean = false;
     let authorizing = false;
 
     const wrappedSignIn = async (identityService: string) => {
@@ -19,7 +19,7 @@
     }
 </script>
 
-<div class="mx-auto w-96 text-center">
+<div class="mx-auto w-72 text-center">
     <h2 class="relative text-xl font-bold">Play now!</h2>
     
 
@@ -30,11 +30,11 @@
     <br />
 
     <LoginButton on:click={() => console.log("CurrentCapitalism")}>Login</LoginButton>
-    <br />
-    <br />
-    <div class="space-y-2">
+    {#if !oAuth}
+    <div class="space-y-2 mt-16">
         <IconCallToAction icon={steamIcon} text="Login with Steam" on:click={() => wrappedSignIn("steam")}/>
         <IconCallToAction icon={githubIcon} text="Login with Github" on:click={() => wrappedSignIn("github")}/>
         <IconCallToAction icon={googleIcon} text="Login with Google" on:click={() => wrappedSignIn("google")}/>
     </div>
+    {/if}
 </div>
