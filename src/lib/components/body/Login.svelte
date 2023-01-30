@@ -6,14 +6,21 @@
     import IconCallToAction from '../util/IconCallToAction.svelte';
     import LoginButton from '../util/LoginButton.svelte';
     import ValidatedInput from '../util/form/ValidatedInput.svelte';
-    
+
+    import { page } from '$app/stores';
 	import { signIn } from '@auth/sveltekit/client';
 
     export let oAuth: boolean = false;
 
     const wrappedSignIn = async (identityService: string) => {
-        const res = await signIn(identityService);
+        await signIn(identityService);
     }
+
+    const onAuthChange = (session: object | null) => {
+        if (!!session) window.location.replace("/home");
+    }
+
+    $: onAuthChange($page.data?.session);
 </script>
 
 <div class="mx-auto w-72 text-center">
