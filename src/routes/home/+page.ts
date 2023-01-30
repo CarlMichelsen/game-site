@@ -1,7 +1,7 @@
 import { redirect, type LoadEvent } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
-export const prerender = false;
+export const ssr = true;
 
 export const load: PageLoad = async (loadEvent: LoadEvent) => {
 	const { session } = await loadEvent.parent();

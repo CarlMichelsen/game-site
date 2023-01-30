@@ -17,6 +17,7 @@
     }
 
     const onAuthChange = (session: object | null) => {
+        console.log(session);
         if (!!session) window.location.replace("/home");
     }
 
