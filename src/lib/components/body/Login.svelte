@@ -7,21 +7,14 @@
     import LoginButton from '../util/LoginButton.svelte';
     import ValidatedInput from '../util/form/ValidatedInput.svelte';
 
-    import { page } from '$app/stores';
 	import { signIn } from '@auth/sveltekit/client';
 
     export let oAuth: boolean = false;
 
     const wrappedSignIn = async (identityService: string) => {
         await signIn(identityService);
+        setTimeout(() => window.location.replace("/home"), 200);
     }
-
-    const onAuthChange = (session: object | null) => {
-        console.log(session);
-        if (!!session) window.location.replace("/home");
-    }
-
-    $: onAuthChange($page.data?.session);
 </script>
 
 <div class="mx-auto w-72 text-center">
