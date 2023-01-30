@@ -11,6 +11,11 @@ const authConfigGithub = GitHub({
 const config: SvelteKitAuthConfig = {
 	trustHost: environment.development,
 	secret: environment.authSecret,
+	callbacks: {
+		async redirect() {
+			return '/home';
+		}
+	},
 	providers: [authConfigGithub] as Provider[]
 };
 
