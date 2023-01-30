@@ -8,9 +8,7 @@
     export let update: boolean = false;
 
     const change = (text: string, updateFlag: boolean) => {
-        console.log(`<${id}>`,"change", `"${text}"`, updateFlag);
-
-
+        //console.log(`<${id}>`,"change", `"${text}"`, updateFlag);
         if (!updateFlag) return;
         update = false;
     };
