@@ -2,7 +2,6 @@ import type { Provider } from '@auth/core/providers';
 import GitHub from '@auth/core/providers/github';
 import { SvelteKitAuth, type SvelteKitAuthConfig } from '@auth/sveltekit';
 import { environment } from '$lib/environment';
-import type { signIn } from '@auth/sveltekit/client';
 
 const authConfigGithub = GitHub({
 	clientId: environment.githubAuthClientId,
@@ -12,6 +11,11 @@ const authConfigGithub = GitHub({
 const config: SvelteKitAuthConfig = {
 	trustHost: environment.development,
 	secret: environment.authSecret,
+	callbacks: {
+		async redirect() {
+			return '/home';
+		}
+	},
 	providers: [authConfigGithub] as Provider[]
 };
 
