@@ -13,7 +13,6 @@
 
     const wrappedSignIn = async (identityService: string) => {
         const res = await signIn(identityService);
-        if (res?.ok) window.location.replace("/home");
     }
 </script>
 
